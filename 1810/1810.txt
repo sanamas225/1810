@@ -1,0 +1,112 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+public class GenericCollection<T>
+{
+private ArrayList arrayList;
+private List<T> list;
+private Stack<T> stack;
+private Queue<T> queue;
+
+public GenericCollection()
+{
+arrayList = new ArrayList();
+list = new List<T>();
+stack = new Stack<T>();
+queue = new Queue<T>();
+}
+public void AddArrayList(T item)
+{
+Console.WriteLine("Добавление элемента {0} в ArrayList", item);
+arrayList.Add(item);
+}
+
+public void AddList(T item)
+{
+Console.WriteLine("Добавление элемента {0} в List", item);
+list.Add(item);
+}
+
+public void AddStack(T item)
+{
+Console.WriteLine("Добавление элемента {0} в Stack", item);
+stack.Push(item);
+}
+
+public void AddQueue(T item)
+{
+Console.WriteLine("Добавление элемента {0} в Queue", item);
+queue.Enqueue(item);
+}
+
+public void RemoveArrayList(T item)
+{
+Console.WriteLine("Удаление элемента {0} из ArrayList", item);
+arrayList.Remove(item);
+}
+
+public void RemoveList(T item)
+{
+Console.WriteLine("Удаление элемента {0} из List", item);
+list.Remove(item);
+}
+
+public void RemoveStack()
+{
+Console.WriteLine("Удаление элемента из Stack");
+stack.Pop();
+}
+
+public void RemoveQueue()
+{
+Console.WriteLine("Удаление элемента из Queue");
+queue.Dequeue();
+}
+
+public T GetElementArrayList(int index)
+{
+Console.WriteLine("Получение элемента с индексом {0} из ArrayList", index);
+return (T)arrayList[index];
+}
+
+public T GetElementList(int index)
+{
+Console.WriteLine("Получение элемента с индексом {0} из List", index);
+return list[index];
+}
+
+public int GetLengthArrayList()
+{
+Console.WriteLine("Получение длины ArrayList");
+return arrayList.Count;
+}
+
+public int GetLengthList()
+{
+Console.WriteLine("Получение длины List");
+return list.Count;
+}
+}
+
+public class Program
+{
+public static void Main()
+{
+
+GenericCollection<int> collection = new GenericCollection<int>();
+
+Console.WriteLine("До изменений:");
+collection.AddArrayList(10);
+collection.AddList(20);
+collection.AddStack(30);
+collection.AddQueue(40);
+
+Console.WriteLine("Во время изменений:");
+int elementArrayList = collection.GetElementArrayList(0);
+int elementList = collection.GetElementList(0);
+Console.WriteLine("После изменений:");
+Console.WriteLine("элементы из  ArrayList: " + elementArrayList);
+Console.WriteLine("элементы из List: " + elementList);
+}
+}
